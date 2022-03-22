@@ -127,3 +127,14 @@ ul li::before {
     font-size: 16px;
     color: var(--grey);
 }
+
+.progrup .card {
+    box-shadow: 0 0 5px 0 var(--blue);
+    background: inherit;
+    backdrop-filter: blur(10px);
+}
+
+.progrup img {
+    width: 100px;
+    margin: auto;
+}
