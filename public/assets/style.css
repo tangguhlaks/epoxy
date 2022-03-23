@@ -186,3 +186,31 @@ ul li::before {
     height: 500px;
     object-fit: cover;
 }
+
+.endcard {
+    color: #fff;
+    padding: 0;
+}
+
+.endcard h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.endcard h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer {
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    background-color: darkslategrey;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
