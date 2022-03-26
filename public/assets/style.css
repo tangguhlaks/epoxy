@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 .hub {
     background-color: var(--blue);
@@ -28,12 +30,12 @@ body {
 
 .navbar {
     font-family: 'Poppins', sans-serif;
-    z-index: 2;
 }
 
 .workingspace {
     font-family: 'Inter', sans-serif;
     align-items: center;
+    background-image: linear-gradient(to bottom right, #fff,#fff,#e4f7fc);
 }
 
 .workingspace a {
@@ -64,6 +66,14 @@ body {
 .workingspace p {
     color: var(--grey);
     font-size: 18px;
+}
+
+.marginerror1 {
+    margin-left: 100px;
+}
+
+.marginerror2 {
+    margin-left: -100px;
 }
 
 .infocomp {
@@ -214,3 +224,55 @@ ul li::before {
     color: #fff;
     text-decoration: none;
 }
+
+.terhubung {
+    align-items: center;
+}
+
+.terhubung a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.terhubung h1 {
+    font-weight: 700;
+    font-size: 56px;
+}
+
+.terhubung h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 52px;
+}
+
+.terhubung p {
+    color: var(--grey);
+    font-size: 16px;
+}
+
+.terhubung p {
+    color: var(--grey);
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .marginerror1 {
+        margin: auto;
+    }
+    .marginerror2 {
+        margin: auto;
+        text-align: center;
+    }
+    .infocomp {
+        text-align: center;
+    }
+    .cardgrup {
+        text-align: center;
+        margin: auto;
+        
+    }
+    .cardgrup .card {
+        margin-top: 30px;
+    }
+  }
