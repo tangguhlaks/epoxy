@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 .hub {
     background-color: var(--blue);
@@ -13,19 +15,48 @@ body {
     color: var(--white);
 }
 
+.hab {
+    border: 2px solid var(--grey);
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+
+.hab:hover {
+    border: 2px solid var(--blue);
+}
+
 .navbar {
     font-family: 'Poppins', sans-serif;
-    z-index: 2;
 }
 
 .workingspace {
     font-family: 'Inter', sans-serif;
     align-items: center;
+    background-image: linear-gradient(to bottom right, #fff,#fff,#e4f7fc);
+}
+
+.workingspace a {
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .workingspace h1 {
     font-weight: 700;
     font-size: 56px;
+}
+
+.workingspace h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 52px;
+}
+
+.workingspace p {
+    color: var(--grey);
+    font-size: 16px;
 }
 
 .label {
@@ -35,6 +66,14 @@ body {
 .workingspace p {
     color: var(--grey);
     font-size: 18px;
+}
+
+.marginerror1 {
+    margin-left: 100px;
+}
+
+.marginerror2 {
+    margin-left: -100px;
 }
 
 .infocomp {
@@ -127,3 +166,113 @@ ul li::before {
     font-size: 16px;
     color: var(--grey);
 }
+
+.progrup .card {
+    box-shadow: 0 0 5px 0 var(--blue);
+    background: inherit;
+    backdrop-filter: blur(10px);
+}
+
+.progrup img {
+    width: 100px;
+    margin: auto;
+}
+
+@font-face {
+    font-family: gmail;
+    src: url();
+}
+
+@font-face {
+    font-family: instagram;
+    src: url();
+}
+
+.informan {
+    background-color: red;
+}
+
+.carousel .carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.endcard {
+    color: #fff;
+    padding: 0;
+}
+
+.endcard h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.endcard h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer {
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    background-color: darkslategrey;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.terhubung {
+    align-items: center;
+}
+
+.terhubung a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.terhubung h1 {
+    font-weight: 700;
+    font-size: 56px;
+}
+
+.terhubung h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 52px;
+}
+
+.terhubung p {
+    color: var(--grey);
+    font-size: 16px;
+}
+
+.terhubung p {
+    color: var(--grey);
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .marginerror1 {
+        margin: auto;
+    }
+    .marginerror2 {
+        margin: auto;
+        text-align: center;
+    }
+    .infocomp {
+        text-align: center;
+    }
+    .cardgrup {
+        text-align: center;
+        margin: auto;
+        
+    }
+    .cardgrup .card {
+        margin-top: 30px;
+    }
+  }
