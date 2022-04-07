@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +19,9 @@ use App\Http\Controllers\UserController;
 // });
 
 Route::get('/',[UserController::class,'index']);
+Route::get('/harga',[UserController::class,'harga']);
+
+Route::get('/admin/dashboard',[AdminController::class,'index']);
+Route::get('/admin/profile',[AdminController::class,'profile']);
+Route::get('/admin/header',[AdminController::class,'index']);
+Route::get('/admin/menu',[AdminController::class,'index']);

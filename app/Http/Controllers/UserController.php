@@ -19,5 +19,11 @@ class UserController extends Controller
         // $user->save();
         return view('user/index');
     }
+   
+    public function harga()
+    {
+        return view('user/harga');
+    }
+    
 
 }
