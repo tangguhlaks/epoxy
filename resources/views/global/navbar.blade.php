@@ -10,7 +10,7 @@
             </a>
             <a href="{{ url('admin-home') }}">
                 {{-- <img class="img-fluid" src="admin/images/logo.png" alt="Theme-Logo" /> --}}
-                <h4 style="margin-top:6px">Hotel Nata</h4>
+                <h4 style="margin-top:6px"> &nbsp;&nbsp;&nbsp; Epoxy</h4>
             </a>
             <a class="mobile-options">
                 <i class="ti-more"></i>

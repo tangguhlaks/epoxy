@@ -54,8 +54,8 @@
                                                     <thead>
                                                         <tr>
                                                             <th width="100px">#</th>
+                                                            <th width="250px">Title</th>
                                                             <th width="250px">Text</th>
-                                                            <th width="250px">Text 2 (Small Text)</th>
                                                             <th>Image</th>
                                                             <th>Action</th>
                                                         </tr>
@@ -65,8 +65,8 @@
                                                         @foreach ($sliderlist as $v)
                                                         <tr>
                                                             <th scope="row">{{ $no++ }}</th>
+                                                            <th>{{ $v->title }}</th>
                                                             <th>{{ $v->text }}</th>
-                                                            <th>{{ $v->text2 }}</th>
                                                             <td><img width="300px" src="images/slider/{{$v->image}}" alt=""></td>
                                                             <td><button class="btn btn-danger" data-toggle="modal" data-target="#modalDel{{ $v->id }}">Delete</button></td>
                                                         </tr>
@@ -96,12 +96,12 @@
         @csrf
         <div class="modal-body">
             <div class="form-group">
-                <textarea placeholder="Text Slider" name="text" id="text" class="form-control" cols="30" rows="10"></textarea>
-                <small class="text-danger">@error('text'){{$message}}@enderror</small>
+                <input type="text" name="title" placeholder="Title" id="title" class="form-control">
+                <small class="text-danger">@error('title'){{$message}}@enderror</small>
             </div>
             <div class="form-group">
-                <input type="text" name="text2" placeholder="Text 2 Slider (Small Text)" id="text2" class="form-control">
-                <small class="text-danger">@error('text2'){{$message}}@enderror</small>
+                <textarea placeholder="Text Slider" name="text" id="text" class="form-control" cols="30" rows="10"></textarea>
+                <small class="text-danger">@error('text'){{$message}}@enderror</small>
             </div>
             <div class="form-group">
               <input type="file" name="file" id="file" class="form-control">

@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 //guest
 Route::get('/',[UserController::class,'index']);
-Route::get('/login',[LoginController::class,'index'])->middleware('guest');
-Route::get('/sienna<3tangguh',[LoginController::class,'register']);
+Route::get('/login-admin',[LoginController::class,'index'])->middleware('guest');
+Route::get('/admin-register',[LoginController::class,'register']);
 Route::post('/register-user',[LoginController::class,'registerUser']);
 Route::post('/auth',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout']);

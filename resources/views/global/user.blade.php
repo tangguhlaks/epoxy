@@ -1,247 +1,47 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-    <!-- ========== SEO ========== -->
-    <title>Hotel Nata - @yield('title')</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-    <meta content="" name="author">
-    <!-- ========== FAVICON ========== -->
-    <link rel="apple-touch-icon-precomposed" href="{{url('images/favicon-apple.png')}}"/>
-    <link rel="icon" href="{{url('images/favicon.png')}}">
-    <!-- ========== STYLESHEETS ========== -->
-    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/bootstrap-select.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/jquery.mmenu.css')}}">
-    <link rel="stylesheet" href="{{url('revolution/css/layers.css')}}">
-    <link rel="stylesheet" href="{{url('revolution/css/settings.css')}}">
-    <link rel="stylesheet" href="{{url('revolution/css/navigation.css')}}">
-    <link rel="stylesheet" href="{{url('css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/daterangepicker.css')}}">
-    <link rel="stylesheet" href="{{url('css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{url('css/style.css')}}">
-    <link rel="stylesheet" href="{{url('css/responsive.css')}}">
-    <!-- ========== ICON FONTS ========== -->
-    <link href="{{url('fonts/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{url('fonts/flaticon.css')}}" rel="stylesheet">
-    <!-- ========== GOOGLE FONTS ========== -->
-    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="default/style.css">
+    <title>Kya Epoxy Prima</title>
+    <link rel="icon" href="default/asset/img/logo.png" type="image/icon type">
   </head>
   <body>
-    <!-- ========== PRELOADER ========== -->
-    <div class="loader loader3">
-      <div class="loader-inner">
-            <div class="spin">
-            <span></span>
-            <img style="margin-top:47px" src="{{ url('images/logo.jpg')}}" alt="Hotel Nata">
-            </div>
-      </div>
-    </div>
-    <!-- ========== MOBILE MENU ========== -->
-    <nav id="mobile-menu"></nav>
-    <!-- ========== WRAPPER ========== -->
-    <div class="wrapper">
-      <!-- ========== TOP MENU ========== -->
-      <div class="topbar">
-        <div class="container">
-            @if (session()->has('loginError'))
-            <div class="alert alert-danger">{{ session('loginError') }}</div>
-          @endif
-          @if (session()->has('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
-          @endif
-        </div>
-    </div>
-      <div class="topbar">
-        <div class="container">
-          <div class="welcome-mssg">
-            Welcome to Hotel Nata. @auth, {{ auth()->user()->name }} @endauth
-          </div>
-          <div class="top-right-menu">
-            <ul class="top-menu">
-              <li class="d-none d-md-inline">
-                <a href="tel:+18881234567">
-                  <i class="fa fa-phone"></i>+62 888 123 4567
-                </a>
-              </li>
-              <li class="d-none d-md-inline">
-                <a href="mailto:natahotels@gmail.com">
-                  <i class="fa fa-envelope-o"></i>natahotels@gmail.com</a>
-              </li>
-              @guest
-              <li class="d-none d-md-inline">
-                <a data-toggle="modal" data-target="#loginModal">
-                  Login
-                </a>
-              </li>
-              <li class="d-none d-md-inline">
-                <a data-toggle="modal" data-target="#registerModal">
-                  Register
-                </a>
-              </li>
-              @endguest
-              @auth
-              <li class="d-none d-md-inline">
-                <a data-toggle="modal" data-target="#logoutModal">
-                  Logout
-                </a>
-              </li>
-              @endauth
-            </ul>
-          </div>
-        </div>
-      </div>
-      @include('global.header')
-      @yield('content')
-      @include('global.footer')
-    </div>
+    @include('global.navbar-user')
+    @yield('content')
 
-
-    <!--Logout Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            are you sure you want to logout from Hotel Nata ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" style="background:grey" data-dismiss="modal">Close</button>
-          <form id="logout" action="{{ url('logout') }}" method="post">
-            @csrf
-          <button type="submit" class="btn btn-default">Logout</button>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="row footer col-md-12 bg-dark">
+  <div class="col-md-4">
+      <a href="me-5">Aplikator Cat Epoxy Lantai</a>
   </div>
-
-      <!--register Modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="logoutModalLabel">Register</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form id="logout" action="{{ url('register-user') }}" method="post">
-            @csrf
-        <div class="modal-body">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Name" id="name" class="form-control">
-                <small class="text-danger">@error('name'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Email" id="email" class="form-control">
-                <small class="text-danger">@error('email'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" placeholder="Password" id="password" class="form-control">
-                <small class="text-danger">@error('password'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password_confirmation" placeholder="Confirm Password" id="password_confirmation" class="form-control">
-                <small class="text-danger">@error('password_confirmation'){{$message}}@enderror</small>
-            </div>
-            <br>
-            <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal">
-                Already Have an Account ? Login
-              </a>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" style="background:grey" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-default">Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-4">
+      <img src="default/asset/img/logo.png" class="me-2" width="30" alt="">
+      <a href="">Kya Epoxy Prima</a>
   </div>
-
-<!--login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="logoutModalLabel">Login</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form id="logout" action="{{ url('auth') }}" method="post">
-            @csrf
-        <div class="modal-body">
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Email" id="email" class="form-control">
-                <small class="text-danger">@error('email'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" placeholder="Password" id="password" class="form-control">
-                <small class="text-danger">@error('password'){{$message}}@enderror</small>
-            </div>
-            <br>
-            <a data-dismiss="modal" data-toggle="modal" data-target="#registerModal">
-                Don't Have Account ? Register
-              </a>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" style="background:grey" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-default">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-4">
+      <i class="lab la-facebook la-2x"></i>
+      <i class="lab la-linkedin la-2x"></i>
   </div>
+  </div>
+    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- ========== CONTACT NOTIFICATION ========== -->
-    <div id="contact-notification" class="notification fixed"></div>
-    <!-- ========== BACK TO TOP ========== -->
-    <div class="back-to-top">
-      <i class="fa fa-angle-up" aria-hidden="true"></i>
-    </div>
-    <!-- ========== JAVASCRIPT ========== -->
-    <script src="{{ url('js/jquery.min.js')}}"></script>
-    <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
-    <script src="{{ url('js/bootstrap.min.js')}}"></script>
-    <script src="{{ url('js/bootstrap-select.min.js')}}"></script>
-    <script src="{{ url('js/jquery.mmenu.js')}}"></script>
-    <script src="{{ url('js/jquery.inview.min.js')}}"></script>
-    <script src="{{ url('js/jquery.countdown.min.js')}}"></script>
-    <script src="{{ url('js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{ url('js/owl.carousel.min.js')}}"></script>
-    <script src="{{ url('js/owl.carousel.thumbs.min.js')}}"></script>
-    <script src="{{ url('js/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ url('js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{ url('js/masonry.pkgd.min.js')}}"></script>
-    <script src="{{ url('js/wow.min.js')}}"></script>
-    <script src="{{ url('js/countup.min.js')}}"></script>
-    <script src="{{ url('js/moment.min.js')}}"></script>
-    <script src="{{ url('js/daterangepicker.js')}}"></script>
-    <script src="{{ url('js/parallax.min.js')}}"></script>
-    <script src="{{ url('js/smoothscroll.min.js')}}"></script>
-    <script src="{{ url('js/instafeed.min.js')}}"></script>
-    <script src="{{ url('js/main.js')}}"></script>
-    <!-- ========== REVOLUTION SLIDER ========== -->
-    <script src="{{ url('revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-    <script src="{{ url('revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
-    <script src="{{ url('revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
   </body>
 </html>

@@ -19,20 +19,6 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="{{ (Request::segment(1) == "admin-room" ||Request::segment(1) == "add-room") ? "active":"" }}">
-                <a href="{{ url('admin-room') }}">
-                    <span class="pcoded-micon"><i class="ti-folder"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Room</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-            <li class="{{ Request::segment(1) == "admin-payment" ? "active":"" }}">
-                <a href="{{ url('admin-payment') }}">
-                    <span class="pcoded-micon"><i class="ti-bookmark-alt"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Books</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
             <li class="{{ Request::segment(1) == "admin-message" ? "active":"" }}">
                 <a href="{{ url('admin-message') }}">
                     <span class="pcoded-micon"><i class="ti-comment"></i></span>

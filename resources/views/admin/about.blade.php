@@ -114,15 +114,15 @@
                 <small class="text-danger">@error('title'){{$message}}@enderror</small>
             </div>
             <div class="form-group">
-                <input type="text" name="title2" placeholder="Title About (small text under title)" id="title2" class="form-control">
-                <small class="text-danger">@error('title2'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
                 <textarea placeholder="Text About" name="text" id="text" class="form-control" cols="30" rows="10"></textarea>
                 <small class="text-danger">@error('text'){{$message}}@enderror</small>
             </div>
             <div class="form-group">
-                <textarea placeholder="Text About (small text)" name="text2" id="text2" class="form-control" cols="30" rows="10"></textarea>
+                <input type="text" name="title2" placeholder="Title About 2" id="title2" class="form-control">
+                <small class="text-danger">@error('title2'){{$message}}@enderror</small>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Text About 2" name="text2" id="text2" class="form-control" cols="30" rows="10"></textarea>
                 <small class="text-danger">@error('text2'){{$message}}@enderror</small>
             </div>
         </div>

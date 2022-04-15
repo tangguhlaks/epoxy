@@ -17,9 +17,9 @@
     <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="CodedThemes">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ url('images/favicon.png') }}">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <link rel="icon" href="default/asset/img/logo.png" type="image/icon type">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="{{ url('admin/css/bootstrap/css/bootstrap.min.css')}}">
     <!-- themify-icons line icon -->
@@ -50,7 +50,7 @@
 </div>
     <!-- Pre-loader end -->
 
-    <section class="login p-fixed d-flex text-center" style="background-color: #f8e6c7">
+    <section class="login p-fixed d-flex text-center" style="background-color: #aed5f9">
         <!-- Container-fluid starts -->
         <div class="container">
             <div class="row">
