@@ -11,7 +11,7 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Data</div>
+            {{-- <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Data</div>
             <li class="{{ Request::segment(1) == "admin-user" ? "active":"" }}">
                 <a href="{{ url('admin-user') }}">
                     <span class="pcoded-micon"><i class="ti-user"></i></span>
@@ -25,7 +25,7 @@
                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Message</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-            </li>
+            </li> --}}
 
             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Setting Layout</div>
             <li class="{{ Request::segment(1) == "slider" ? "active":"" }}">
@@ -42,10 +42,10 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="{{ Request::segment(1) == "service" ? "active":"" }}">
-                <a href="{{ url('service') }}">
+            <li class="{{ Request::segment(1) == "admin-harga" ? "active":"" }}">
+                <a href="{{ url('admin-harga') }}">
                     <span class="pcoded-micon"><i class="ti-layout-list-post"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Services</span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Harga</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
@@ -56,10 +56,10 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="{{ Request::segment(1) == "rating" ? "active":"" }}">
-                <a href="{{ url('rating') }}">
+            <li class="{{ Request::segment(1) == "network" ? "active":"" }}">
+                <a href="{{ url('network') }}">
                     <span class="pcoded-micon"><i class="ti-star"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Rating</span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Network</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>

@@ -10,11 +10,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mx-auto">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Harga</a>
-        <a class="nav-link" href="#">Portofolio</a>
-        <a class="nav-link" href="#">Kontak</a>
+        <a class="nav-link" href="#harga">Harga</a>
+        <a class="nav-link" href="#galeri">Galeri</a>
+        <a class="nav-link" href="#hubungi">Kontak</a>
         </div>
-        <button class="btn hub btn-outline-info me-2" type="button">Hubungi Kami</button>
+        <a href="#hubungi" class="btn hub btn-outline-info me-2">Hubungi Kami</a>
     </div>
     </div>
 </nav>

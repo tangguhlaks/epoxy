@@ -7,6 +7,10 @@ use App\Mail\AdminMail;
 use App\Mail\Message as MailMessage;
 use App\Mail\RequestVerification;
 use App\Mail\UserMail;
+use App\Models\About;
+use App\Models\Gallery;
+use App\Models\Harga;
+use App\Models\Network;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +21,15 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            'slider' => Slider::all()
+            'whatsapp' => Network::where('network','Whatsapp')->first()->url,
+            'facebook' => Network::where('network','Facebook')->first()->url,
+            'linkedin' => Network::where('network','Linkedin')->first()->url,
+            'instagram' => Network::where('network','Instagram')->first()->url,
+            'email' => Network::where('network','Email')->first()->url,
+            'slider' => Slider::all(),
+            'about' => About::where('selected',1)->first(),
+            'galeri' => Gallery::all(),
+            'harga' => Harga::all()
         ];
         return view('user.index',$data);
     }

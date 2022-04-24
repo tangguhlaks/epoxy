@@ -67,7 +67,9 @@ Route::group(['middleware'=>'admin'],function(){
     //about
     Route::get('/about',[AdminController::class,'about']);
     Route::post('/add-about',[AdminController::class,'addAbout']);
+    Route::post('/add-about-list',[AdminController::class,'addAboutList']);
     Route::get('/delete-about/{id}',[AdminController::class,'deleteAbout']);
+    Route::get('/delete-about-list/{id}',[AdminController::class,'deleteAboutList']);
     Route::get('/select-about/{id}',[AdminController::class,'selectAbout']);
 
     //about
@@ -97,6 +99,17 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('/add-gallery',[AdminController::class,'addGallery']);
     Route::get('/delete-gallery/{id}',[AdminController::class,'deleteGallery']);
     Route::get('/select-gallery/{id}',[AdminController::class,'selectGallery']);
+
+    //admin-harga
+    Route::get('/admin-harga',[AdminController::class,'harga']);
+    Route::post('/add-harga',[AdminController::class,'addHarga']);
+    Route::get('/delete-harga/{id}',[AdminController::class,'deleteHarga']);
+
+    //admin-network
+    Route::get('/network',[AdminController::class,'network']);
+    Route::get('/add-network',[AdminController::class,'addNetwork']);
+    Route::post('/edit-network',[AdminController::class,'editNetwork']);
+    Route::get('/delete-network/{id}',[AdminController::class,'deleteNetwork']);
 
     //payment
     Route::get('/admin-payment',[AdminController::class,'payment']);

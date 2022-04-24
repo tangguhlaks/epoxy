@@ -60,9 +60,11 @@
                                                         <tr>
                                                             <th width="100px">#</th>
                                                             <th width="250px">Title</th>
-                                                            <th width="250px">Title 2 (Small Title)</th>
                                                             <th width="250px">Text</th>
-                                                            <th width="250px">Text 2 (Small Text)</th>
+                                                            <th width="250px">Title 2</th>
+                                                            <th width="250px">Text 2</th>
+                                                            <th width="250px">Image</th>
+                                                            <th width="250px">List</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -72,15 +74,28 @@
                                                         <tr>
                                                             <th scope="row">{{ $no++ }}</th>
                                                             <th>{{ $v->title }}</th>
-                                                            <th>{{ $v->title2 }}</th>
                                                             <th>{{ $v->text }}</th>
+                                                            <th>{{ $v->title2 }}</th>
                                                             <th>{{ $v->text2 }}</th>
+                                                            <th><img src="images/about/{{ $v->image }}" width="300px"></th>
+                                                            <th>
+                                                                @if($v->list == "")
+                                                                    -
+                                                                @else
+                                                                    <?php $l = explode('~',$v->list); ?>
+                                                                    @for ($i=0;$i<count($l);$i++)
+                                                                        - {{ $l[$i] }} <br>
+                                                                    @endfor
+                                                                @endif
+                                                            </th>
                                                             <td>
                                                                 @if($v->selected == 0)
                                                                 <a class="btn btn-primary" href="{{ url('select-about/'.$v->id) }}">Select</a>
                                                                 @else
                                                                 <button class="btn btn-default">Selected</button>
                                                                 @endif
+                                                                <button class="btn btn-warning" data-toggle="modal" data-target="#modalList{{ $v->id }}">Add List</button>
+                                                                <button class="btn btn-danger" data-toggle="modal" data-target="#modalDelList{{ $v->id }}">Delete List</button>
                                                                 <button class="btn btn-danger" data-toggle="modal" data-target="#modalDel{{ $v->id }}">Delete</button>
                                                             </td>
                                                         </tr>
@@ -125,6 +140,9 @@
                 <textarea placeholder="Text About 2" name="text2" id="text2" class="form-control" cols="30" rows="10"></textarea>
                 <small class="text-danger">@error('text2'){{$message}}@enderror</small>
             </div>
+            <div class="form-group">
+             <input type="file" name="file" id="file" class="form-control">
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -134,6 +152,35 @@
       </div>
     </div>
   </div>
+
+  @foreach ($aboutlist as $v )
+  <div class="modal fade" id="modalList{{ $v->id }}" tabindex="-1" role="dialog" aria-labelledby="modalList{{ $v->id }}" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add List About</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ url('add-about-list') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <input type="text" name="list" placeholder="List About" id="list" class="form-control">
+                    <small class="text-danger">@error('list'){{$message}}@enderror</small>
+                    <input type="hidden" name="myid" value="{{ $v->id }}">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
 
 @foreach ($aboutlist as $v )
 <div class="modal fade" id="modalDel{{ $v->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDel{{ $v->id }}" aria-hidden="true">
@@ -151,6 +198,28 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <a href="{{ url('delete-about/'.$v->id) }}" class="btn btn-primary">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+
+@foreach ($aboutlist as $v )
+<div class="modal fade" id="modalDelList{{ $v->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDelList{{ $v->id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete About</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Delete list this data?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="{{ url('delete-about-list/'.$v->id) }}" class="btn btn-primary">Delete</a>
         </div>
       </div>
     </div>

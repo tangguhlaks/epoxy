@@ -54,8 +54,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th width="100px">#</th>
-                                                            <th width="150px">Title</th>
-                                                            <th width="150px">Category</th>
                                                             <th width="300px">Image</th>
                                                             <th width="200px">Action</th>
                                                         </tr>
@@ -65,15 +63,8 @@
                                                         @foreach ($gallerys as $v)
                                                         <tr>
                                                             <th scope="row">{{ $no++ }}</th>
-                                                            <th>{{ $v->title }}</th>
-                                                            <th>{{ $v->category }}</th>
                                                             <td><img width="300px" src="images/gallery/{{$v->image}}" alt=""></td>
                                                             <td>
-                                                                @if($v->selected == 0)
-                                                                <a class="btn btn-primary" href="{{ url('select-gallery/'.$v->id) }}">Select</a>
-                                                                @else
-                                                                <a class="btn btn-default" href="{{ url('select-gallery/'.$v->id) }}">Selected</a>
-                                                                @endif
                                                                 <button class="btn btn-danger" data-toggle="modal" data-target="#modalDel{{ $v->id }}">Delete</button>
                                                             </td>
                                                         </tr>
@@ -102,20 +93,6 @@
         <form action="{{ url('add-gallery') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
-            <div class="form-group">
-                <input type="text" placeholder="Title" class="form-control" name="title" id="title">
-                <small class="text-danger">@error('title'){{$message}}@enderror</small>
-            </div>
-            <div class="form-group">
-                <select name="category" id="category" class="form-control">
-                    <option value="">--- Select Category ---</option>
-                    <option value="restaurant">Restaurant</option>
-                    <option value="swimming pool">Swimming Pool</option>
-                    <option value="spa">Spa</option>
-                    <option value="room view">Room View</option>
-                </select>
-                <small class="text-danger">@error('category'){{$message}}@enderror</small>
-            </div>
             <div class="form-group">
               <input type="file" name="file" id="file" class="form-control">
               <small class="text-danger">@error('file'){{$message}}@enderror</small>

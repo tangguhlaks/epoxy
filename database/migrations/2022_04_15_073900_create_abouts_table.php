@@ -19,6 +19,8 @@ class CreateAboutsTable extends Migration
             $table->text('text');
             $table->string('title2',100);
             $table->text('text2');
+            $table->text('list');
+            $table->text('image');
             $table->integer('selected');
             $table->timestamps();
         });

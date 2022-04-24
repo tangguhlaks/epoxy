@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Gallery;
+use App\Models\Harga;
+use App\Models\Network;
 use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -74,26 +77,55 @@ class AdminController extends Controller
     }
     public function addAbout(Request $request)
     {
+        $aboutcount = About::all()->count();
+        $aboutcount +=1;
         $request->validate([
             'title' => 'required',
             'title2' => 'required',
             'text' => 'required',
+            'file' =>'required|file|mimes:png,jpg,jpeg|max:2400',
             'text2' => 'required'
         ]);
+        $file = Request()->file;
+        $filename = 'about'.$aboutcount.'.'.$file->extension();
+        $file->move(public_path('images/about'),$filename);
+
         $about = new About();
         $about->title = Request()->title;
         $about->title2 = Request()->title2;
         $about->text = Request()->text;
         $about->text2 = Request()->text2;
+        $about->image = $filename;
         $count = About::all()->count();
         if ($count != 0) {
             $about->selected =0;
         }else{
             $about->selected =1;
         }
-
         $about->save();
         return redirect(url('about'))->with('message',"Data Added successfully");
+    }
+    public function addAboutList(Request $request)
+    {
+        $request->validate([
+            'list' => 'required',
+            'myid' => 'required'
+        ]);
+        $about = About::where('id',Request()->myid)->first();
+        if ($about->list == "") {
+            $about->list = Request()->list;
+        }else{
+            $about->list = $about->list."~".Request()->list;
+        }
+        $about->save();
+        return redirect(url('about'))->with('message',"List Added successfully");
+    }
+    public function deleteAboutList($id)
+    {
+        $about = About::where('id',$id)->first();
+        $about->list ="";
+        $about->save();
+        return redirect(url('about'))->with('message',"List deleted successfully");
     }
     public function deleteAbout($id)
     {
@@ -101,6 +133,8 @@ class AdminController extends Controller
         if ($about->selected == 1) {
             return redirect(url('about'))->with('errorMessage',"The data cannot be deleted, because the data is selected");
         }
+        $data = About::where('id',$id)->first();
+        unlink(public_path('images/about/'.$data->image));
         About::where('id',$id)->delete();
         return redirect(url('about'))->with('message',"Data deleted successfully");
     }
@@ -283,53 +317,125 @@ class AdminController extends Controller
     //     }
     //     return redirect(url('admin-room'))->with('message',"Data selected successfully");
     // }
-    // public function gallery()
-    // {
-    //     $gallerys = Gallery::all();
-    //     $data = [
-    //         'gallerys' => $gallerys
-    //     ];
+    public function gallery()
+    {
+        $gallerys = Gallery::all();
+        $data = [
+            'gallerys' => $gallerys
+        ];
 
-    //     return view('admin.gallery',$data);
-    // }
-    // public function addGallery(Request $request)
-    // {
+        return view('admin.gallery',$data);
+    }
+    public function addGallery(Request $request)
+    {
 
-    //     $gc = Gallery::all()->count();
-    //     $gc +=1;
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'category' => 'required',
-    //         'file' =>'required|file|mimes:png,jpg,jpeg|max:2400'
-    //     ]);
-    //     $file = Request()->file;
-    //     $filename = 'gallery'.$gc.'.'.$file->extension();
-    //     $file->move(public_path('images/gallery'),$filename);
-    //     $gallery = new Gallery();
-    //     $gallery->title = Request()->title;
-    //     $gallery->image = $filename;
-    //     $gallery->category = Request()->category;
-    //     $gallery->save();
-    //     return redirect(url('admin-gallery'))->with('message',"Data Added successfully");
-    // }
-    // public function deleteGallery($id)
-    // {
-    //     $data = Gallery::where('id',$id)->first();
-    //     unlink(public_path('images/gallery/'.$data->image));
-    //     Gallery::where('id',$id)->delete();
-    //     return redirect(url('admin-gallery'))->with('message',"Data Deleted successfully");
-    // }
-    // public function selectGallery($id)
-    // {
-    //     $gallery = Gallery::where('id',$id)->first();
-    //     if ($gallery->selected == 0) {
-    //         $gallery->selected = 1;
-    //     }else {
-    //         $gallery->selected = 0;
-    //     }
-    //     $gallery->save();
-    //     return redirect(url('admin-gallery'))->with('message',"Data selected successfully");
-    // }
+        $gc = Gallery::all()->count();
+        $gc +=1;
+        $request->validate([
+            'file' =>'required|file|mimes:png,jpg,jpeg|max:2400'
+        ]);
+        $file = Request()->file;
+        $filename = 'gallery'.$gc.'.'.$file->extension();
+        $file->move(public_path('images/gallery'),$filename);
+        $gallery = new Gallery();
+        $gallery->image = $filename;
+        $gallery->save();
+        return redirect(url('admin-gallery'))->with('message',"Data Added successfully");
+    }
+    public function deleteGallery($id)
+    {
+        $data = Gallery::where('id',$id)->first();
+        unlink(public_path('images/gallery/'.$data->image));
+        Gallery::where('id',$id)->delete();
+        return redirect(url('admin-gallery'))->with('message',"Data Deleted successfully");
+    }
+    public function harga()
+    {
+        $hargas = Harga::all();
+        $data = [
+            'hargas' => $hargas
+        ];
+
+        return view('admin.harga',$data);
+    }
+    public function addHarga(Request $request)
+    {
+
+        $gc = Harga::all()->count();
+        $gc +=1;
+        $request->validate([
+            'harga' => 'required',
+            'file' =>'required|file|mimes:png,jpg,jpeg|max:2400'
+        ]);
+        $file = Request()->file;
+        $filename = 'harga'.$gc.'.'.$file->extension();
+        $file->move(public_path('images/harga'),$filename);
+        $harga = new Harga();
+        $harga->harga = Request()->harga;
+        $harga->image = $filename;
+        $harga->save();
+        return redirect(url('admin-harga'))->with('message',"Data Added successfully");
+    }
+    public function deleteHarga($id)
+    {
+        $data = Harga::where('id',$id)->first();
+        unlink(public_path('images/harga/'.$data->image));
+        Harga::where('id',$id)->delete();
+        return redirect(url('admin-harga'))->with('message',"Data Deleted successfully");
+    }
+    public function network()
+    {
+        $networks = Network::all();
+        $data = [
+            'networks' => $networks
+        ];
+
+        return view('admin.network',$data);
+    }
+    public function addNetwork()
+    {
+        $network = new Network();
+        $network->network = "Facebook";
+        $network->url = "-";
+        $network->save();
+
+        $network = new Network();
+        $network->network = "Linkedin";
+        $network->url = "-";
+        $network->save();
+
+        $network = new Network();
+        $network->network = "Instagram";
+        $network->url = "-";
+        $network->save();
+
+        $network = new Network();
+        $network->network = "Email";
+        $network->url = "-";
+        $network->save();
+
+        $network = new Network();
+        $network->network = "Whatsapp";
+        $network->url = "-";
+        $network->save();
+        return redirect(url('network'))->with('message',"Data Added successfully");
+    }
+    public function editNetwork(Request $request)
+    {
+
+        $request->validate([
+            'url' => 'required'
+        ]);
+        $network = Network::where('id',Request()->myid)->first();
+        $network->url = Request()->url;
+        $network->save();
+        return redirect(url('network'))->with('message',"URL Edited successfully");
+    }
+    public function deleteNetwork($id)
+    {
+        Network::where('id',$id)->delete();
+        return redirect(url('network'))->with('message',"Data Deleted successfully");
+    }
     // public function service()
     // {
     //     $services = Service::all();
