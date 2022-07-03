@@ -17,8 +17,9 @@ class AdminController extends Controller
     {
         $data = [
             'user' => User::where('role',1)->count(),
-            'book' => 1,
-            'room' => 1
+            'gallery' => Gallery::all()->count(),
+            'harga' => Harga::all()->count(),
+            'slider' => Slider::all()->count()
         ];
         return view('admin.index',$data);
     }
