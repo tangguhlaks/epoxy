@@ -30,7 +30,7 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
 
         }
         return back()->with('loginError','Login Failed ! the password or email may be wrong and the email may not be registered');
