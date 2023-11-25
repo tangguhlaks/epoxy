@@ -62,7 +62,7 @@ class AdminController extends Controller
     }
     public function deleteSlider($id)
     {
-        $data = Slider::where('id',$id)->first();
+        $data = Sliders::where('id',$id)->first();
         unlink(public_path('images/slider/'.$data->image));
         Slider::where('id',$id)->delete();
         return redirect(url('slider'))->with('message',"Data Deleted successfully");
@@ -130,11 +130,11 @@ class AdminController extends Controller
     }
     public function deleteAbout($id)
     {
-        $about = About::where('id',$id)->first();
+        $about = Abouts::where('id',$id)->first();
         if ($about->selected == 1) {
             return redirect(url('about'))->with('errorMessage',"The data cannot be deleted, because the data is selected");
         }
-        $data = About::where('id',$id)->first();
+        $data = Abouts::where('id',$id)->first();
         unlink(public_path('images/about/'.$data->image));
         About::where('id',$id)->delete();
         return redirect(url('about'))->with('message',"Data deleted successfully");
@@ -379,7 +379,7 @@ class AdminController extends Controller
     }
     public function deleteHarga($id)
     {
-        $data = Harga::where('id',$id)->first();
+        $data = Hargas::where('id',$id)->first();
         unlink(public_path('images/harga/'.$data->image));
         Harga::where('id',$id)->delete();
         return redirect(url('admin-harga'))->with('message',"Data Deleted successfully");
@@ -429,7 +429,7 @@ class AdminController extends Controller
         ]);
         $network = Network::where('id',Request()->myid)->first();
         $network->url = Request()->url;
-        $network->save();
+        // $network->save();
         return redirect(url('network'))->with('message',"URL Edited successfully");
     }
     public function deleteNetwork($id)

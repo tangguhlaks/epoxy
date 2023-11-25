@@ -25,8 +25,7 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credential = $request->validate([
-            'email'=>'required|email:dns',
-            'password' => 'required|min:6'
+            'email'=>'required|email:dns'
         ]);
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
